@@ -12,7 +12,7 @@ export function celebrate(count = 26) {
 
   for (let i = 0; i < count; i++) {
     const el = document.createElement("span");
-    el.textContent = PIECES[i % PIECES.length];
+    el.textContent = PIECES[i % PIECES.length] ?? "✨";
     const angle = (Math.PI * 2 * i) / count + Math.random() * 0.4;
     const dist = 120 + Math.random() * 260;
     el.style.cssText = `position:absolute;font-size:${14 + Math.random() * 18}px;--bx:${
