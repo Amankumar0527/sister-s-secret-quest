@@ -11,7 +11,10 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as MemoriesRouteImport } from './routes/memories'
 import { Route as QuizRouteImport } from './routes/quiz'
+import { Route as RewardsRouteImport } from './routes/rewards'
+import { Route as SpinRouteImport } from './routes/spin'
 import { Route as WelcomeRouteImport } from './routes/welcome'
 
 const IndexRoute = IndexRouteImport.update({
@@ -24,9 +27,24 @@ const DashboardRoute = DashboardRouteImport.update({
   path: '/dashboard',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MemoriesRoute = MemoriesRouteImport.update({
+  id: '/memories',
+  path: '/memories',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const QuizRoute = QuizRouteImport.update({
   id: '/quiz',
   path: '/quiz',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RewardsRoute = RewardsRouteImport.update({
+  id: '/rewards',
+  path: '/rewards',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SpinRoute = SpinRouteImport.update({
+  id: '/spin',
+  path: '/spin',
   getParentRoute: () => rootRouteImport,
 } as any)
 const WelcomeRoute = WelcomeRouteImport.update({
@@ -38,34 +56,68 @@ const WelcomeRoute = WelcomeRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/dashboard': typeof DashboardRoute
+  '/memories': typeof MemoriesRoute
   '/quiz': typeof QuizRoute
+  '/rewards': typeof RewardsRoute
+  '/spin': typeof SpinRoute
   '/welcome': typeof WelcomeRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/dashboard': typeof DashboardRoute
+  '/memories': typeof MemoriesRoute
   '/quiz': typeof QuizRoute
+  '/rewards': typeof RewardsRoute
+  '/spin': typeof SpinRoute
   '/welcome': typeof WelcomeRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/dashboard': typeof DashboardRoute
+  '/memories': typeof MemoriesRoute
   '/quiz': typeof QuizRoute
+  '/rewards': typeof RewardsRoute
+  '/spin': typeof SpinRoute
   '/welcome': typeof WelcomeRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/dashboard' | '/quiz' | '/welcome'
+  fullPaths:
+    | '/'
+    | '/dashboard'
+    | '/memories'
+    | '/quiz'
+    | '/rewards'
+    | '/spin'
+    | '/welcome'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/dashboard' | '/quiz' | '/welcome'
-  id: '__root__' | '/' | '/dashboard' | '/quiz' | '/welcome'
+  to:
+    | '/'
+    | '/dashboard'
+    | '/memories'
+    | '/quiz'
+    | '/rewards'
+    | '/spin'
+    | '/welcome'
+  id:
+    | '__root__'
+    | '/'
+    | '/dashboard'
+    | '/memories'
+    | '/quiz'
+    | '/rewards'
+    | '/spin'
+    | '/welcome'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   DashboardRoute: typeof DashboardRoute
+  MemoriesRoute: typeof MemoriesRoute
   QuizRoute: typeof QuizRoute
+  RewardsRoute: typeof RewardsRoute
+  SpinRoute: typeof SpinRoute
   WelcomeRoute: typeof WelcomeRoute
 }
 
@@ -85,11 +137,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/memories': {
+      id: '/memories'
+      path: '/memories'
+      fullPath: '/memories'
+      preLoaderRoute: typeof MemoriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/quiz': {
       id: '/quiz'
       path: '/quiz'
       fullPath: '/quiz'
       preLoaderRoute: typeof QuizRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/rewards': {
+      id: '/rewards'
+      path: '/rewards'
+      fullPath: '/rewards'
+      preLoaderRoute: typeof RewardsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/spin': {
+      id: '/spin'
+      path: '/spin'
+      fullPath: '/spin'
+      preLoaderRoute: typeof SpinRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/welcome': {
@@ -105,7 +178,10 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   DashboardRoute: DashboardRoute,
+  MemoriesRoute: MemoriesRoute,
   QuizRoute: QuizRoute,
+  RewardsRoute: RewardsRoute,
+  SpinRoute: SpinRoute,
   WelcomeRoute: WelcomeRoute,
 }
 export const routeTree = rootRouteImport
